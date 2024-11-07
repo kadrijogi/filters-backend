@@ -1,5 +1,9 @@
 package com.filters.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,6 +19,12 @@ import lombok.Data;
 @Data
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "criteria_type")
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "criteriaType")
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = AmountCriteria.class, name = "AmountCriteria"),
+    @JsonSubTypes.Type(value = TitleCriteria.class, name = "TitleCriteria"),
+    @JsonSubTypes.Type(value = DateCriteria.class, name = "DateCriteria")
+})
 public abstract class Criteria {
 
     @Id
@@ -23,6 +33,7 @@ public abstract class Criteria {
 
     @ManyToOne
     @JoinColumn(name = "filter_id")
+    @JsonIgnore
     private Filter filter;
     
 }
