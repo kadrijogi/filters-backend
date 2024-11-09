@@ -9,7 +9,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://kadrijogi.github.io/filters-app/")
+                .allowedOrigins("https://kadrijogi.github.io")
                 .allowedMethods("GET", "POST", "PUT", "DELETE")  // Allow specific HTTP methods
                 .allowedHeaders("*")  // Allow any header
                 .allowCredentials(true);  // Allow cookies if needed

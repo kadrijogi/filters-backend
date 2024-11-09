@@ -21,7 +21,7 @@ import com.filters.demo.services.FilterService;
 
 @RestController
 @RequestMapping("/filters")
-@CrossOrigin(origins = "https://kadrijogi.github.io/filters-app")
+@CrossOrigin(origins = "https://kadrijogi.github.io")
 public class FilterController {
 
     private final FilterService filterService;
