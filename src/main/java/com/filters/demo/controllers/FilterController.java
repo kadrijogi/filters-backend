@@ -21,7 +21,7 @@ import com.filters.demo.services.FilterService;
 
 @RestController
 @RequestMapping("/filters")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://kadrijogi.github.io/filters-app")
 public class FilterController {
 
     private final FilterService filterService;
@@ -53,7 +53,7 @@ public class FilterController {
 
         // If the filter is found, return it with 200 OK
         return filter.map(f -> new ResponseEntity<>(f, HttpStatus.OK))
-                     .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+                            .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     // GET: Get all filters for a specific user
